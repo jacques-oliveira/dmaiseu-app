@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainViewFragment">
+    tools:context=".PhoneFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Main View Fragment"
         android:gravity="center"
-        android:textSize="32sp"/>
+        android:textSize="32sp"
+        android:text="Phone Fragment" />
 
 </FrameLayout>

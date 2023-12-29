@@ -2,38 +2,42 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view"
+
     >
 
     <group
-        android:checkableBehavior="single">
-
+        android:checkableBehavior="single"
+        >
         <item
             android:id="@+id/nav_perfil"
             android:icon="@drawable/baseline_person_24"
-            android:title="Perfil"
-            
-            />
+            android:title="Perfil"/>
         <item
             android:id="@+id/nav_casa"
             android:icon="@drawable/baseline_house_24"
-            android:title="Casa de Apoio"/>
+            android:title="@string/casa_de_apoio"/>
         <item
             android:id="@+id/nav_Tel"
             android:icon="@drawable/baseline_phone_24"
-            android:title="Telefones"/>
+            android:title="@string/telefones"/>
         <item
             android:id="@+id/nav_email"
             android:icon="@drawable/baseline_email_24"
-            android:title="Email"/>
+            android:title="@string/email"/>
         <item
             android:id="@+id/nav_Info"
             android:icon="@drawable/baseline_info_24"
-            android:title="Informações"/>
+            android:title="@string/info"/>
     </group>
 
-    <item
-        android:id="@+id/nav_settings"
-        android:icon="@drawable/baseline_settings_24"
-        android:title="Configurações"/>
+    <group
+        android:id="@+id/group_settings"
+        >
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/baseline_settings_24"
+            android:title="@string/settings"/>
+    </group>
+
 
 </menu>

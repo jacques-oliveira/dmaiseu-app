@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginBottom="16dp"
+    android:background="#DD2C00"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <de.hdodenhof.circleimageview.CircleImageView
+        app:layout_constraintTop_toTopOf="@id/dmaiseuicon"
+        app:layout_constraintBottom_toBottomOf="@id/dmaiseuicon"
+        app:layout_constraintStart_toStartOf="@id/dmaiseuicon"
+        app:layout_constraintEnd_toEndOf="@id/dmaiseuicon"
+        android:src="@drawable/gradiente_icon_color"
+        android:layout_width="92dp"
+        android:layout_height="92dp"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/dmaiseuicon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:civ_border_color="#F44336"
-        app:civ_border_width="4dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@mipmap/user_icon"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="3dp"
+        android:layout_marginBottom="16dp"
+        android:padding="16dp"
+        android:src="@drawable/dmais_eu_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
+
     <TextView
         android:id="@+id/user_name"
-        android:text="Usuario"
+        android:text="Usuario 741"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginStart="16dp"
@@ -28,4 +40,9 @@
         app:layout_constraintStart_toEndOf="@id/dmaiseuicon"
         app:layout_constraintTop_toTopOf="@id/dmaiseuicon"
         app:layout_constraintBottom_toBottomOf="@id/dmaiseuicon"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#9C2A2A"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,14 @@
 <resources>
-    <string name="app_name">dmaiseu</string>
+    <string name="app_name">D+Eu</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="perfil">Perfil</string>
+    <string name="casa_de_apoio">Casa de Apoio</string>
+    <string name="telefones">Telefones</string>
+    <string name="email">Email</string>
+    <string name="info">Informações</string>
+    <string name="settings">Configurações</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
 </resources>
