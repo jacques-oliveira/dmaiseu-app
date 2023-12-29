@@ -3,15 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserInputDataFragment">
+    tools:context=".ProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="User Data"
-        android:textSize="32sp"
         android:gravity="center"
-        android:textStyle="bold"/>
+        android:textSize="32sp"
+        android:text="Perfil Fragment" />
 
 </FrameLayout>
