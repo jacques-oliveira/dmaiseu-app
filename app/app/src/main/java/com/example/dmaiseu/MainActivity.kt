@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .replace(R.id.fragment_container, ProfileFragment()).commit()
             navigationView.setCheckedItem(R.id.nav_perfil)
         }
-
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -48,6 +47,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .replace(R.id.fragment_container,ProfileFragment()).commit()
             R.id.nav_Tel -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container,PhoneFragment()).commit()
+            R.id.nav_casa -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container,HouseFragment()).commit()
+            R.id.nav_email -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container,EmailFragment()).commit()
+            R.id.nav_Info -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container,InfoFragment()).commit()
             R.id.nav_settings -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container,SettingsFragment()).commit()
         }
