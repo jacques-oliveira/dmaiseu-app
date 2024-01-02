@@ -1,14 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".InfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/info_text"
+        android:text="A informação até você!"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="#F44336"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <FrameLayout
+        android:id="@+id/img_raise_hands"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/info_text"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="128dp"
+            android:src="@drawable/raised_hands"/>
+
+    </FrameLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/hscroll_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/img_raise_hands">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:text="TFD"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_margin="2dp"
+                android:padding="4dp"
+                android:background="@drawable/button_scrowllview_info"
+                app:cornerRadius="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                />
+            <Button
+                android:text="INSS"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_margin="2dp"
+                android:padding="4dp"
+                android:background="@drawable/button_scrowllview_info"
+                app:cornerRadius="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"/>
+
+            <Button
+                android:text="Transplante de Medula Óssea"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_margin="2dp"
+                android:padding="4dp"
+                android:background="@drawable/button_scrowllview_info"
+                app:cornerRadius="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:id="@+id/v_content_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/hscroll_menu"
+        >
+    <FrameLayout
+        android:id="@+id/scroll_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context="./SettingsFragment"/>
 
-</FrameLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

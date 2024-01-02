@@ -1,16 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/user_frame_head"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="32sp"
-        android:text="Perfil Fragment" />
+        android:layout_height="0dp"
+        android:background="@drawable/user_profile_head_color"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
-</FrameLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_image"
+            android:layout_width="match_parent"
+            android:layout_height="148dp"
+            android:src="@drawable/user_vector"
+            android:layout_marginTop="16dp"
+            app:civ_border_color="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:civ_border_width="6dp"/>
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="46dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/user_image"
+            tools:text="Marcos S"
+            android:hint="Nome do usuário"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/user_transp_date"
+        android:layout_width="150dp"
+        android:layout_height="46dp"
+        android:background="@drawable/user_transpdate_shape"
+        android:gravity="center"
+
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/user_frame_head"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_frame_head"
+        android:hint="--/--/--"
+        android:textColorHint="@color/white"
+        tools:text="16/09/2017" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/transp_time_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/user_transp_date">
+
+        <TextView
+            android:id="@+id/year_transp_time"
+            android:text=""
+            android:textSize="24sp"
+            android:textColor="#4CAF50"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="6 Ano(s)"
+            />
+        <TextView
+            android:id="@+id/month_transp_time"
+            android:text=""
+            android:textSize="24sp"
+            android:textColor="#4CAF50"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            tools:text="3 Mese(s)"/>
+        <TextView
+            android:id="@+id/day_transp_time"
+            android:text=""
+            android:textSize="24sp"
+            android:textColor="#4CAF50"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            tools:text="16 dia(s)"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/transp_time_row">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/rgp_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/rgp_label"
+                android:text="RGP:"
+                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="16dp"
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+            <TextView
+                android:id="@+id/rgp_value"
+                android:text=""
+                android:textSize="22sp"
+                android:textStyle="normal"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/rgp_label"
+                tools:text="625889"
+                android:hint="516922"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            >
+            <TextView
+                android:id="@+id/hospital_label"
+                android:text="Hospital:"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginLeft="16dp"
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:id="@+id/hospital_value"
+                android:text=""
+                android:textSize="22sp"
+                android:textStyle="normal"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Amaral Carvalho"
+                android:hint="Hospital"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/state_label"
+                android:text="Estado:"
+                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="16dp"
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:id="@+id/state_value"
+                android:text=""
+                android:textSize="22sp"
+                android:textStyle="normal"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Rio Grande do Sul"
+                android:hint="Estado"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/return_label"
+                android:text="Retorno:"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginLeft="16dp"
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:id="@+id/return_value"
+                android:text=""
+                android:textSize="22sp"
+                android:textStyle="normal"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="--/--/--"
+                tools:text="20/09/2024"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
