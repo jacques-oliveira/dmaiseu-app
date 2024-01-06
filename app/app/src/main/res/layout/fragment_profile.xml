@@ -125,6 +125,7 @@
                 android:textStyle="bold"
                 android:layout_marginLeft="16dp"
                 android:layout_width="92dp"
+                android:layout_marginBottom="4dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 />
@@ -155,6 +156,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginLeft="16dp"
+                android:layout_marginBottom="4dp"
                 android:layout_width="92dp"
                 android:layout_height="wrap_content"
                 />
@@ -192,6 +194,7 @@
                 android:textSize="22sp"
                 android:textStyle="normal"
                 android:layout_marginLeft="16dp"
+                android:layout_marginBottom="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Rio Grande do Sul"
