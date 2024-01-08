@@ -1,19 +1,16 @@
 package com.example.dmaiseu
 
-import android.app.Activity
-import android.content.Context
 import android.content.SharedPreferences
+import android.os.Build
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
 class SharedUserViewModel :ViewModel(){
-
     fun saveData(sharedPrefs:SharedPreferences,user_name: EditText, userRGP: EditText, user_state: EditText, userTranspDate: TextView, userHospistal: EditText, userReturnDate: TextView):Boolean{
         val editor: SharedPreferences.Editor = sharedPrefs.edit()
         if(userRGP?.text != null && user_name?.text != null && user_state?.text != null
@@ -63,5 +60,66 @@ class SharedUserViewModel :ViewModel(){
         val format = "dd/MM/yyyy"
         val sdf = SimpleDateFormat(format, Locale.forLanguageTag("BR"))
         txtView?.setText(sdf.format(calendar.time))
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun loadDataProfile(sharedPrefs: SharedPreferences, user_name:TextView, user_rgp:TextView, user_state:TextView, userTranspDate:TextView, userHospistal:TextView,
+                        userReturnDate:TextView, year_transp_time:TextView, month_transp_time:TextView, day_transp_time:TextView){
+        val savedUserName = sharedPrefs.getString("user_name",null)
+        val savedUser_RGP = sharedPrefs.getString("user_rgp",null)
+        val savedState = sharedPrefs.getString("user_state",null)
+        val savedTranspDate = sharedPrefs.getString("user_transp_date",null)
+        val savedHospital =sharedPrefs.getString("user_hospital",null)
+        val savedReturnDate = sharedPrefs.getString("user_return_date",null)
+        var dateNow = Calendar.getInstance().time
+
+        if(savedTranspDate != null){
+            val transpFullTime = dateNow.time - (SimpleDateFormat("dd/MM/yyyy", Locale.forLanguageTag("Br")).parse(savedTranspDate)).time
+            val year:Double =  transpFullTime/(3600.0*1000.0*24.0*365.0)
+            val month:Double = (year - year.toInt())*12
+            val day:Double = (month - month.toInt())*30
+
+            if(year > 0){
+                if(year > 1){
+                    year_transp_time.text = (year.toInt()).toString() + " anos"
+                }else{
+                    year_transp_time.text = (year.toInt()).toString() + " ano"
+                }
+            }
+            if(month > 0){
+                if(month > 1){
+                    month_transp_time.text = (month.toInt()).toString() + " meses"
+                }else{
+                    month_transp_time.text = (month.toInt()).toString() + " mês"
+                }
+            }
+            if(day > 0){
+                if(day > 1){
+                    day_transp_time.text = (day.toInt()).toString() + " dias"
+                }else{
+                    day_transp_time.text = (day.toInt()).toString() + " dia"
+                }
+            }
+        }
+        if(savedUserName != null){
+            user_name?.text = savedUserName
+        }
+        if(savedUser_RGP != null){
+            user_rgp?.text = savedUser_RGP
+        }
+        if(savedState != null){
+            user_state?.text = savedState
+        }
+        if(savedTranspDate != null){
+            userTranspDate?.text = savedTranspDate
+        }
+        if(savedHospital != null){
+            userHospistal?.text = savedHospital
+        }
+        if(savedReturnDate != null){
+            userReturnDate?.text = savedReturnDate
+        }
+
     }
 }

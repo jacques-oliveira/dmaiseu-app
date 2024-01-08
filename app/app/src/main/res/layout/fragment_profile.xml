@@ -130,7 +130,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 />
             <TextView
-                android:id="@+id/rgp_value"
+                android:id="@+id/user_rgp"
                 android:text=""
                 android:textSize="22sp"
                 android:textStyle="normal"
@@ -189,7 +189,7 @@
                 android:layout_height="wrap_content"
                 />
             <TextView
-                android:id="@+id/state_value"
+                android:id="@+id/user_state"
                 android:text=""
                 android:textSize="22sp"
                 android:textStyle="normal"
@@ -218,7 +218,7 @@
                 android:layout_height="wrap_content"
                 />
             <TextView
-                android:id="@+id/return_value"
+                android:id="@+id/user_return_date"
                 android:text=""
                 android:textSize="22sp"
                 android:textStyle="normal"
