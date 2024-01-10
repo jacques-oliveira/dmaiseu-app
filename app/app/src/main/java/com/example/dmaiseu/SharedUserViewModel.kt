@@ -62,7 +62,6 @@ class SharedUserViewModel :ViewModel(){
         txtView?.setText(sdf.format(calendar.time))
     }
 
-
     @RequiresApi(Build.VERSION_CODES.O)
     fun loadDataProfile(sharedPrefs: SharedPreferences, user_name:TextView, user_rgp:TextView, user_state:TextView, userTranspDate:TextView, userHospistal:TextView,
                         userReturnDate:TextView, year_transp_time:TextView, month_transp_time:TextView, day_transp_time:TextView){
@@ -81,25 +80,31 @@ class SharedUserViewModel :ViewModel(){
             val day:Double = (month - month.toInt())*30
 
             if(year > 0){
-                if(year > 1){
+                if(year >= 2){
                     year_transp_time.text = (year.toInt()).toString() + " anos"
                 }else{
                     year_transp_time.text = (year.toInt()).toString() + " ano"
                 }
+            }else{
+                year_transp_time.text = ""
             }
             if(month > 0){
-                if(month > 1){
+                if(month >= 2){
                     month_transp_time.text = (month.toInt()).toString() + " meses"
                 }else{
                     month_transp_time.text = (month.toInt()).toString() + " mês"
                 }
+            }else{
+                month_transp_time.text = ""
             }
             if(day > 0){
-                if(day > 1){
+                if(day >= 2){
                     day_transp_time.text = (day.toInt()).toString() + " dias"
                 }else{
                     day_transp_time.text = (day.toInt()).toString() + " dia"
                 }
+            }else{
+                day_transp_time.text = ""
             }
         }
         if(savedUserName != null){
@@ -120,6 +125,5 @@ class SharedUserViewModel :ViewModel(){
         if(savedReturnDate != null){
             userReturnDate?.text = savedReturnDate
         }
-
     }
 }

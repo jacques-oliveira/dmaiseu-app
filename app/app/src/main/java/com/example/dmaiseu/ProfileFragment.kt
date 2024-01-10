@@ -46,7 +46,6 @@ class ProfileFragment : Fragment() {
 
         viewModel.loadDataProfile(sharedPrefs,user_name,userRGP,user_state, userTranspDate,userHospistal,userReturnDate, year_transp_time, month_transp_time, day_transp_time)
 
-
         if(userTranspDate.text == null){
             userTranspDate.setOnClickListener {
                 Toast.makeText(activity,"Preencha seus dados \n no Menu lateral!",Toast.LENGTH_LONG*2).show()

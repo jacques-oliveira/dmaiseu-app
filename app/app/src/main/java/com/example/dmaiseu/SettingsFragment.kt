@@ -25,7 +25,6 @@ class SettingsFragment : Fragment(){
     ): View? {
         // Inflate the layout for this fragment
         viewModel = ViewModelProvider(requireActivity()).get(SharedUserViewModel::class.java)
-
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
@@ -62,7 +61,6 @@ class SettingsFragment : Fragment(){
         }
 
         btnTranspDate?.setOnClickListener {
-
             DatePickerDialog(requireContext(),datePickerTranspDate,
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
@@ -70,7 +68,6 @@ class SettingsFragment : Fragment(){
         }
 
         btnReturnDate?.setOnClickListener{
-
             DatePickerDialog(requireContext(),datePickerReturnDate,
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
