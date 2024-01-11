@@ -64,7 +64,7 @@ class SharedUserViewModel :ViewModel(){
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun loadDataProfile(sharedPrefs: SharedPreferences, user_name:TextView, user_rgp:TextView, user_state:TextView, userTranspDate:TextView, userHospistal:TextView,
-                        userReturnDate:TextView, year_transp_time:TextView, month_transp_time:TextView, day_transp_time:TextView){
+                        userReturnDate:TextView, stringTranspTime:TextView){
         val savedUserName = sharedPrefs.getString("user_name",null)
         val savedUser_RGP = sharedPrefs.getString("user_rgp",null)
         val savedState = sharedPrefs.getString("user_state",null)
@@ -78,34 +78,41 @@ class SharedUserViewModel :ViewModel(){
             val year:Double =  transpFullTime/(3600.0*1000.0*24.0*365.0)
             val month:Double = (year - year.toInt())*12
             val day:Double = (month - month.toInt())*30
+            var transpTimeText:String? = null
+            var stringYearTime:String? = null
+            var stringMonthTime:String? = null
+            var stringDayTime:String? = null
+            var stringFullTime:String? = null
 
-            if(year > 0){
-                if(year >= 2){
-                    year_transp_time.text = (year.toInt()).toString() + " anos"
-                }else{
-                    year_transp_time.text = (year.toInt()).toString() + " ano"
-                }
-            }else{
-                year_transp_time.text = ""
+            if (year >= 2) {
+                stringYearTime = (year.toInt()).toString() + " anos"
+            } else {
+                stringYearTime = (year.toInt()).toString() + " ano"
             }
-            if(month > 0){
-                if(month >= 2){
-                    month_transp_time.text = (month.toInt()).toString() + " meses"
-                }else{
-                    month_transp_time.text = (month.toInt()).toString() + " mês"
-                }
-            }else{
-                month_transp_time.text = ""
+            if (month >= 2) {
+                stringMonthTime = (month.toInt()).toString() + " meses"
+            } else {
+                stringMonthTime = (month.toInt()).toString() + " mês"
             }
-            if(day > 0){
-                if(day >= 2){
-                    day_transp_time.text = (day.toInt()).toString() + " dias"
-                }else{
-                    day_transp_time.text = (day.toInt()).toString() + " dia"
-                }
-            }else{
-                day_transp_time.text = ""
+            if (day >= 2) {
+                stringDayTime = (day.toInt()).toString() + " dias"
+            } else {
+                stringDayTime = (day.toInt()).toString() + " dia"
             }
+
+            if(year > 1 && month > 1 && day > 1){
+                stringFullTime = stringYearTime + "\n" + stringMonthTime + "\n" + stringDayTime
+            }else if(year > 1 && month > 1){
+                stringFullTime = stringYearTime + "\n" + stringMonthTime
+            }else if(month > 1 && day > 1 ){
+                stringFullTime = stringMonthTime + "\n" + stringDayTime
+            }else if(year > 1 && day > 1){
+                stringFullTime = stringYearTime + "\n" + stringDayTime
+            }else{
+                stringFullTime = stringDayTime
+            }
+            //stringFullTime = stringYearTime +"\n" + stringMonthTime + "\n"+ stringDayTime
+            stringTranspTime.text = stringFullTime
         }
         if(savedUserName != null){
             user_name?.text = savedUserName

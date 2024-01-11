@@ -38,13 +38,12 @@ class ProfileFragment : Fragment() {
         val user_name = view?.findViewById<TextView>(R.id.user_name) as TextView
         val user_state = view?.findViewById<TextView>(R.id.user_state) as TextView
         val userHospistal =view?.findViewById<TextView>(R.id.hospital_value) as TextView
-        val year_transp_time = view?.findViewById<TextView>(R.id.year_transp_time) as TextView
-        val month_transp_time = view?.findViewById<TextView>(R.id.month_transp_time) as TextView
-        val day_transp_time = view?.findViewById<TextView>(R.id.day_transp_time) as TextView
+        val stringTranspTime = view?.findViewById<TextView>(R.id.stringTranspTime) as TextView
+
 
         val sharedPrefs: SharedPreferences = this.requireActivity().getSharedPreferences("SHARED_PREFS_USER", Context.MODE_PRIVATE)
 
-        viewModel.loadDataProfile(sharedPrefs,user_name,userRGP,user_state, userTranspDate,userHospistal,userReturnDate, year_transp_time, month_transp_time, day_transp_time)
+        viewModel.loadDataProfile(sharedPrefs,user_name,userRGP,user_state, userTranspDate,userHospistal,userReturnDate, stringTranspTime)
 
         if(userTranspDate.text == null){
             userTranspDate.setOnClickListener {
