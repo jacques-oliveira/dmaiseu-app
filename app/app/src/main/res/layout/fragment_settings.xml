@@ -129,6 +129,39 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+
+        android:id="@+id/blood_row"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/state_row">
+
+        <TextView
+            android:id="@+id/bood_type_label"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:fontFamily="sans-serif-medium"
+            android:text="Sangue"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/blood_options"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="bottom"
+            android:theme="@style/Theme.Design.Light.NoActionBar"
+            style="@style/CustomSpinner"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
     <TextView
         android:id="@+id/transp_label"
         android:text="Qual o dia do Transplante?"
@@ -140,12 +173,13 @@
         android:gravity="center"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
-        app:layout_constraintTop_toBottomOf="@id/state_row"/>
+        app:layout_constraintTop_toBottomOf="@id/blood_row"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/transp_date_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"
@@ -225,7 +259,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/return_label"
         app:layout_constraintStart_toStartOf="@+id/transp_date_value">
 
@@ -233,7 +267,8 @@
             android:id="@+id/reuturn_date_picker"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:src="@drawable/baseline_date_range_24" />
+            android:src="@drawable/baseline_date_range_24"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/user_return_date_value"

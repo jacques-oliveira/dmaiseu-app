@@ -66,11 +66,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/user_transp_date">
 
         <TextView
-            android:id="@+id/year_transp_time"
+            android:id="@+id/stringTranspTime"
             android:text=""
             android:textSize="24sp"
             android:textColor="#4CAF50"
@@ -80,29 +80,6 @@
             android:layout_height="wrap_content"
             tools:text="6 Ano(s)"
             />
-        <TextView
-            android:id="@+id/month_transp_time"
-            android:text=""
-            android:textSize="24sp"
-            android:textColor="#4CAF50"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            tools:text="3 Mese(s)"/>
-        <TextView
-            android:id="@+id/day_transp_time"
-            android:text=""
-            android:textSize="24sp"
-            android:textColor="#4CAF50"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            tools:text="16 dia(s)"/>
-
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -125,14 +102,16 @@
                 android:textStyle="bold"
                 android:layout_marginLeft="16dp"
                 android:layout_width="92dp"
+                android:layout_marginBottom="4dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 />
             <TextView
-                android:id="@+id/rgp_value"
+                android:id="@+id/user_rgp"
                 android:text=""
                 android:textSize="22sp"
                 android:textStyle="normal"
+                android:textColor="#1976D2"
                 android:layout_marginLeft="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -142,6 +121,37 @@
                 />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/blood_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/blood_label"
+                android:text="Sangue:"
+                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="16dp"
+                android:layout_width="92dp"
+                android:layout_marginBottom="4dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+            <TextView
+                android:id="@+id/user_blood"
+                android:text=""
+                android:textSize="22sp"
+                android:textStyle="normal"
+                android:textColor="#D32F2F"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/rgp_label"
+                tools:text="O+"
+                android:hint="O+"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -155,6 +165,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginLeft="16dp"
+                android:layout_marginBottom="4dp"
                 android:layout_width="92dp"
                 android:layout_height="wrap_content"
                 />
@@ -163,6 +174,7 @@
                 android:text=""
                 android:textSize="22sp"
                 android:textStyle="normal"
+                android:textColor="#1976D2"
                 android:layout_marginLeft="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -187,11 +199,13 @@
                 android:layout_height="wrap_content"
                 />
             <TextView
-                android:id="@+id/state_value"
+                android:id="@+id/user_state"
                 android:text=""
                 android:textSize="22sp"
                 android:textStyle="normal"
+                android:textColor="#1976D2"
                 android:layout_marginLeft="16dp"
+                android:layout_marginBottom="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Rio Grande do Sul"
@@ -215,10 +229,11 @@
                 android:layout_height="wrap_content"
                 />
             <TextView
-                android:id="@+id/return_value"
+                android:id="@+id/user_return_date"
                 android:text=""
                 android:textSize="22sp"
                 android:textStyle="normal"
+                android:textColor="#1976D2"
                 android:layout_marginLeft="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
