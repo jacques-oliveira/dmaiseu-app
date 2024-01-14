@@ -5,10 +5,165 @@
     android:layout_height="match_parent"
     tools:context=".TmoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_margin="8dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/inssImage"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/tmo_image"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Transplante de Medula Óssea"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="2dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tmo1"
+                android:textAlignment="gravity"
+                android:textSize="24sp"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="4dp"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Para que serve:"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="O TCTH é utilizado no tratamento de diversas condições médicas, especialmente em casos de doenças hematológicas e oncológicas. Ele é empregado para tratar leucemias, linfomas, mieloma múltiplo e anemias graves, oferecendo a possibilidade de cura ou controle dessas condições."
+                    android:textAlignment="gravity"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Qual o tratamento:"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tmo2"
+                    android:textAlignment="gravity"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipos - Autólogo vs. Alogênico:"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAlignment="gravity"
+                android:textSize="24sp"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="16dp"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Autólogo:"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No TMO autólogo, as células-tronco são coletadas do próprio paciente. A expectativa de vida pode depender da eficácia do tratamento para a condição subjacente."
+                    android:textAlignment="gravity"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alogênico:"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No TMO alogênico, as células-tronco vêm de um doador compatível. A expectativa de vida pode variar, sendo influenciada pela compatibilidade do doador, pelo risco de complicações e pela possibilidade de complicações crônicas, como a doença do enxerto contra o hospedeiro."
+                    android:textAlignment="gravity"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
+
+
 
 </FrameLayout>
