@@ -2,6 +2,7 @@ package com.example.dmaiseu
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -30,6 +31,7 @@ class SettingsFragment : Fragment(){
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

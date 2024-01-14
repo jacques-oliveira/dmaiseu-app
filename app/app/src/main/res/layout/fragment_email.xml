@@ -5,10 +5,165 @@
     android:layout_height="match_parent"
     tools:context=".EmailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/tmo_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <TextView
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:text="TMO"
+                    android:gravity="center"
+                    android:textColor="#E53935"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textSize="20sp"
+                    android:text="ambtmo.alex@amaralcarvalho.org.br"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:textSize="20sp"
+                    android:text="ambtmo.priscila@amaralcarvalho.org.br"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:textSize="20sp"
+                    android:text="ambtmo.isabele@amaralcarvalho.org.br"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"/>
+                <View
+                    android:background="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="4dp"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/servi_social_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <TextView
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:text="Serviço Social"
+                    android:gravity="center"
+                    android:textColor="#E53935"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textSize="20sp"
+                    android:text="servicosocial.sheila@amaralcarvalho.org.br"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:textSize="20sp"
+                    android:text="servicosocial.tatiana@amaralcarvalho.org.br"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"/>
+                <TextView
+                    android:textSize="20sp"
+                    android:text="servicosocial.mariza@amaralcarvalho.org.br"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"/>
+                <View
+                    android:background="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="4dp"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/relatorio_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <TextView
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:text="Relatórios"
+                    android:gravity="center"
+                    android:textColor="#E53935"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textSize="20sp"
+                    android:text="relatorios@amaralcarvalho.org.br "
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:textSize="20sp"
+                    android:text="relatorios.anacarolina@amaralcarvalho.org.br"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"/>
+                <TextView
+                    android:textSize="20sp"
+                    android:text="relatorios.beatriz@amaralcarvalho.org.br"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"/>
+                <View
+                    android:background="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="4dp"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
 
 </FrameLayout>
