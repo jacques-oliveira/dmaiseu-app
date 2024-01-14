@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomSpinner" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">#D32F2F</item>
+    </style>
+</resources>

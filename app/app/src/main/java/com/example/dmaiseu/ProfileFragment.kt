@@ -39,11 +39,11 @@ class ProfileFragment : Fragment() {
         val user_state = view?.findViewById<TextView>(R.id.user_state) as TextView
         val userHospistal =view?.findViewById<TextView>(R.id.hospital_value) as TextView
         val stringTranspTime = view?.findViewById<TextView>(R.id.stringTranspTime) as TextView
-
+        val userBlood = view?.findViewById<TextView>(R.id.user_blood) as TextView
 
         val sharedPrefs: SharedPreferences = this.requireActivity().getSharedPreferences("SHARED_PREFS_USER", Context.MODE_PRIVATE)
 
-        viewModel.loadDataProfile(sharedPrefs,user_name,userRGP,user_state, userTranspDate,userHospistal,userReturnDate, stringTranspTime)
+        viewModel.loadDataProfile(sharedPrefs,user_name,userRGP,user_state, userTranspDate,userHospistal,userReturnDate, stringTranspTime,userBlood)
 
         if(userTranspDate.text == null){
             userTranspDate.setOnClickListener {
