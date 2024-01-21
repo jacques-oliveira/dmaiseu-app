@@ -1,19 +1,25 @@
 package com.example.dmaiseu
 
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Build
-import android.widget.Adapter
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
 class SharedUserViewModel :ViewModel(){
     val bloodOptions = arrayOf("O+","O-","A+","A-","B+","B-","AB+","AB-")
+    val internalFilePath:String = "/storage/emulated/0/Android/data/com.example.dmaiseu/files/DCIM"
+    val ImageFolderName:String = "DmaisEuFolder"
+    var userImageName:String? = null
     fun saveData(sharedPrefs:SharedPreferences,user_name: String, userRGP: String, user_state: String, userTranspDate: String,
                  userHospistal: String, userReturnDate: String, userBlood:Int):Boolean{
         val editor: SharedPreferences.Editor = sharedPrefs.edit()
@@ -83,6 +89,7 @@ class SharedUserViewModel :ViewModel(){
         val savedReturnDate = sharedPrefs.getString("user_return_date",null)
         val savedUserBloodPosition = sharedPrefs.getInt("user_blood",0)
         var dateNow = Calendar.getInstance().time
+        val savedUserImageName =sharedPrefs.getString("user_image_name",null)
 
         if(savedTranspDate != null){
             val transpFullTime = dateNow.time - (SimpleDateFormat("dd/MM/yyyy", Locale.forLanguageTag("Br")).parse(savedTranspDate)).time
@@ -146,5 +153,26 @@ class SharedUserViewModel :ViewModel(){
         if(savedUserBloodPosition != null){
             user_blood.text = bloodOptions.get(savedUserBloodPosition)
         }
+        if(savedUserImageName !=null){
+            userImageName = savedUserImageName
+        }
+    }
+
+    fun loadImage(image: ImageView, path:String){
+        val bitmap: Bitmap? = try{
+            BitmapFactory.decodeFile(path + File.separator + userImageName)
+        }catch (e:Exception){
+            null
+        }
+        if(bitmap != null){
+            image.setImageBitmap(bitmap)
+        }
+    }
+
+    fun saveUserImage(userImageName:String, sharedPrefs: SharedPreferences){
+        val editor: SharedPreferences.Editor = sharedPrefs.edit()
+            editor.apply {
+                putString("user_image_name",userImageName?.toString())
+            }.apply()
     }
 }

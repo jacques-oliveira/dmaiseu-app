@@ -46,7 +46,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         val sharedPrefs: SharedPreferences = this.getSharedPreferences("SHARED_PREFS_USER", Context.MODE_PRIVATE)
         val user_name_drawer : TextView = findViewById<NavigationView?>(R.id.nav_view).getHeaderView(0).findViewById(R.id.user_name_drawer)
-        user_name_drawer.text = sharedPrefs.getString("user_name",null)!!.split(" ")[0]
+        val savedUserName = sharedPrefs.getString("user_name",null)
+        if(savedUserName != null){
+            user_name_drawer.text = savedUserName!!.split(" ")[0]
+        }
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
