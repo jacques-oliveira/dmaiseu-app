@@ -37,6 +37,7 @@ android {
     buildFeatures{
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -50,4 +51,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     ///rounded imageview
     implementation("de.hdodenhof:circleimageview:3.1.0")
+    ////imagepicker
+    implementation ("com.github.dhaval2404:imagepicker:2.1")
+    implementation ("androidx.activity:activity-ktx:1.2.3")
 }

@@ -10,10 +10,38 @@
     <string name="settings">Configurações</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
-    <string name="inss">Instituto Nacional do Seguro Social – INSS foi criado em 27 de junho de 1990, por meio do Decreto n° 99.350,
-        a partir da fusão do Instituto de Administração Financeira da Previdência e Assistência Social –
-        IAPAS com o Instituto Nacional de Previdência Social – INPS, como autarquia vinculada ao
-        então Ministério da Previdência e Assistência Social – MPAS.
+    <string name="inss0">
+        O INSS (Instituto Nacional do Seguro Social) é uma autarquia federal no Brasil vinculada
+        ao Ministério da Economia. Ele gerencia o sistema previdenciário do país, concedendo
+        benefícios como aposentadorias, pensões, auxílio-doença e salário-maternidade.
+    </string>
+    <string name="inss1">
+        O INSS (Instituto Nacional do Seguro Social) é uma autarquia federal brasileira responsável
+        pela administração e concessão de benefícios da Previdência Social no país. Fundado em 1990,
+        o INSS é vinculado ao Ministério da Economia e desempenha um papel crucial na gestão dos sistemas
+        de aposentadorias, pensões, auxílios e outros benefícios previdenciários.
+    </string>
+    <string name="inss2">
+        O sistema previdenciário passou por reformas ao longo dos anos, e as regras para benefícios podem
+        variar conforme a legislação vigente.
+    </string>
+    <string name="inss3">
+        Abrange diversas modalidades de benefícios previdenciários,
+        cada um destinado a situações específicas. Algumas das principais modalidades incluem:
+    </string>
 
-</string>
+    <string name="tmo1">
+        O transplante de células-tronco hematopoéticas (TCTH) é um procedimento médico que envolve a substituição
+        ou regeneração das células-tronco hematopoéticas do paciente, localizadas na medula óssea, por meio da infusão
+        de células-tronco sadias provenientes de um doador compatível. Essas células-tronco são as precursoras das células
+        do sangue, como glóbulos brancos, glóbulos vermelhos e plaquetas.
+    </string>
+
+    <string name="tmo2">
+        O procedimento de TCTH envolve diferentes etapas. Inicialmente, a medula óssea do paciente é destruída ou suprimida
+        por meio de quimioterapia, radioterapia ou ambos. Posteriormente, as células-tronco saudáveis do doador, compatíveis
+        com o paciente, são infundidas, migrando para a medula óssea e iniciando a produção de células sanguíneas normais.
+        O transplante pode ser autólogo, utilizando as próprias células-tronco do paciente, ou alogênico, envolvendo um doador compatível.
+    </string>
+
 </resources>

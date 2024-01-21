@@ -5,153 +5,135 @@
     android:layout_height="match_parent"
     tools:context=".HouseFragment">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/hospital_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:text="Hospital Amaral Carvalho"
-                android:textColor="#E53935"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textSize="20sp"
-                android:text="Rua Dona Silvéria, 150"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textSize="20sp"
-                android:text="Chácara Miraglia - Jaú/SP"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textSize="20sp"
-                android:text="Telefone:(14)3602-1200"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <View
-                android:background="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="4dp"
-                />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/hemonucleo_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:text="Hemonúcleo Regional de Jaú"
-                android:textColor="#E53935"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textSize="20sp"
-                android:text="Rua Dona Silvéria, 150"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textSize="20sp"
-                android:text="Chácara Miraglia - Jaú/SP"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textSize="20sp"
-                android:text="Telefone:(14)3602-1200"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <View
-                android:background="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="4dp"
-                />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/instituto_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:text="Insituto Amaral Carvalho"
-                android:textColor="#E53935"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textSize="20sp"
-                android:text="Rua Rio Branco, 14-26 - Bauru/SP"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textSize="20sp"
-                android:text="Telefone:(14)3104-0660"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <View
-                android:background="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="4dp"
-                />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/entidade_anna_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="8dp">
 
-            <TextView
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:text="Insituto Amaral Carvalho"
-                android:textColor="#E53935"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/casa_eva_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textSize="20sp"
-                android:text="Rua Paulino Maciel, 285 - Jaú/SP"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:text="Casa de Apoio EVA L. V. Barbanti"
+                    android:textColor="#E53935"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textSize="20sp"
+                    android:text="Rua Galdêncio Guacelli, 205 - Jaú - SP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textSize="20sp"
+                    android:text="Chácara Miraglia - Jaú/SP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textSize="20sp"
+                    android:text="Telefone: (14)3225-1257"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:background="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="4dp"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/casa_geral_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textSize="20sp"
-                android:text="Telefone:(14)3621-3064"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:text="Casa de Apoio Geral"
+                    android:textColor="#E53935"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textSize="20sp"
+                    android:text="Rua Aristides Lobo Sobrinho,\n305 - Jaú - SP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textSize="20sp"
+                    android:text="Chácara Miraglia - Jaú/SP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textSize="20sp"
+                    android:text="Telefone:(14) 3625-4236"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:background="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="4dp"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/hospital_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <View
-                android:background="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="4dp"
-                />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:text="Casa Ronald McDonald"
+                    android:textColor="#E53935"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textSize="20sp"
+                    android:text="Rua Galdêncio Guacelli, 185 - Jaú - SP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textSize="20sp"
+                    android:text="Chácara Miraglia - Jaú/SP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textSize="20sp"
+                    android:text="Telefone:(14)3621-4522"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:background="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="4dp"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
 
 </FrameLayout>

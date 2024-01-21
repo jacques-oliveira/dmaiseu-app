@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:layout_margin="8dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -18,16 +18,353 @@
                 android:id="@+id/inssImage"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
-                android:src="@drawable/inss"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:src="@drawable/inss"/>
+
             <TextView
-                android:text="@string/inss"
-                android:textSize="24sp"
-                android:textAlignment="gravity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/inssImage"
-                />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:text="@string/inss1"
+                android:textAlignment="gravity"
+                android:textSize="24sp"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/inss3"
+                android:textAlignment="gravity"
+                android:textSize="24sp"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="16dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1.Aposentadorias:"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textAlignment="gravity"
+                android:textSize="24sp"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="16dp"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aposentadoria por Idade:"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Para homens a partir dos 65 anos
+                    e mulheres a partir dos 60 anos, com carência mínima de contribuições."
+                    android:textAlignment="gravity"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aposentadoria por Tempo de Contribuição:"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Exige um tempo mínimo de contribuição, que pode variar conforme o caso."
+                    android:textColor="@color/black"
+                    android:textAlignment="gravity"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aposentadoria por Invalidez:"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Concedida a quem é considerado permanentemente incapaz para o trabalho."
+                    android:textAlignment="gravity"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    android:layout_marginTop="16dp"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2.Pensões:"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textAlignment="gravity"
+                android:textSize="24sp"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="16dp"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pensão por Morte:"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Destinada aos dependentes do segurado falecido, como cônjuge, filhos ou pais."
+                    android:textAlignment="gravity"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3.Auxílios:"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textAlignment="gravity"
+                android:textSize="24sp"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="16dp"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Auxílio-Doença: "
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Concedido temporariamente a quem
+                     está incapacitado para o trabalho devido a doença ou acidente."
+                    android:textAlignment="gravity"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Auxílio-Acidente:"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Para segurados que ficam com
+                     sequelas definitivas após acidentes de trabalho."
+                    android:textAlignment="gravity"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Auxílio-Reclusão:"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pago aos dependentes do segurado que é recolhido à prisão."
+                    android:textAlignment="gravity"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="4.Salários-Família e Salário-Maternidade:"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textAlignment="gravity"
+                android:textSize="23sp"
+                android:justificationMode="none"
+                android:layout_marginTop="16dp"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Salário-Família:"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Benefício pago ao segurado de baixa renda que tenha filhos menores de 14 anos."
+                    android:textAlignment="gravity"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Salário-Maternidade:"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Concedido à segurada gestante durante o período de afastamento por maternidade."
+                    android:textColor="@color/black"
+                    android:textAlignment="gravity"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5.Benefício de Prestação Continuada (BPC):"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textAlignment="gravity"
+                android:textSize="23sp"
+                android:justificationMode="none"
+                android:layout_marginTop="16dp"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="BPC-Loas: "
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:textAlignment="gravity"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pago a idosos e pessoas com deficiência de baixa renda.
+                            Também para pessoas com deficiência de qualquer idade que estejam na mesma situação."
+                    android:textAlignment="gravity"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:justificationMode="inter_word"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,14 +8,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
-import java.text.SimpleDateFormat
 
 class ProfileFragment : Fragment() {
     private lateinit var viewModel:SharedUserViewModel
@@ -40,10 +37,13 @@ class ProfileFragment : Fragment() {
         val userHospistal =view?.findViewById<TextView>(R.id.hospital_value) as TextView
         val stringTranspTime = view?.findViewById<TextView>(R.id.stringTranspTime) as TextView
         val userBlood = view?.findViewById<TextView>(R.id.user_blood) as TextView
+        val user_image:ImageView = view?.findViewById<ImageView>(R.id.user_image) as ImageView
 
         val sharedPrefs: SharedPreferences = this.requireActivity().getSharedPreferences("SHARED_PREFS_USER", Context.MODE_PRIVATE)
 
         viewModel.loadDataProfile(sharedPrefs,user_name,userRGP,user_state, userTranspDate,userHospistal,userReturnDate, stringTranspTime,userBlood)
+
+        viewModel.loadImage(user_image,viewModel.internalFilePath)
 
         if(userTranspDate.text == null){
             userTranspDate.setOnClickListener {
@@ -51,4 +51,5 @@ class ProfileFragment : Fragment() {
             }
         }
     }
+
 }

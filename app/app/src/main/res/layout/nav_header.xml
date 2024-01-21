@@ -29,8 +29,8 @@
         />
 
     <TextView
-        android:id="@+id/user_name"
-        android:text="Usuario 741"
+        android:id="@+id/user_name_drawer"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
