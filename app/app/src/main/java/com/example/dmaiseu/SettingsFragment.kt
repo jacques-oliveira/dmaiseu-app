@@ -197,14 +197,28 @@ class SettingsFragment : Fragment(){
 
     private fun saveBitmap(bitmap: Bitmap) {
 
-        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-        val filename = "JPEG_$timeStamp.jpg"
+        val diretorio = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+        val file = File(diretorio, "userimage.jpg")
 
-        val fileOutputStream: FileOutputStream
+        if(file.exists()){
+            if(file.delete() ){
+                gravaImagem(file, bitmap)
+            }
+        }else{
+            gravaImagem(file, bitmap)
+        }
+
+    }
+
+    private fun gravaImagem(file: File, bitmap: Bitmap) {
         try {
-            fileOutputStream = requireActivity().openFileOutput(filename, Context.MODE_PRIVATE)
+            val fileOutputStream = FileOutputStream(file)
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream)
+            fileOutputStream.flush()
             fileOutputStream.close()
+            Toast.makeText(
+                requireContext(), "Imagem salva com sucesso em $file", Toast.LENGTH_SHORT
+            ).show()
         } catch (e: Exception) {
             Log.e("MainActivity", "Error saving bitmap: ${e.message}")
         }
