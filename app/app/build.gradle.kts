@@ -3,16 +3,22 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+buildscript{
+    repositories {
+        jcenter()
+        maven { url = uri("https://jitpack.io") }
+    }
+}
 android {
     namespace = "com.example.dmaiseu"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.dmaiseu"
+        applicationId = "com.BDgames.DmaisEu"
         minSdk = 24
         targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 20
+        versionName = "1.3.7"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -37,7 +43,6 @@ android {
     buildFeatures{
         viewBinding = true
     }
-
 }
 
 dependencies {
@@ -51,7 +56,9 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     ///rounded imageview
     implementation("de.hdodenhof:circleimageview:3.1.0")
-    ////imagepicker
+    //imagepicker
     implementation ("com.github.dhaval2404:imagepicker:2.1")
     implementation ("androidx.activity:activity-ktx:1.2.3")
+    implementation ("androidx.fragment:fragment-ktx:1.3.3")
+
 }

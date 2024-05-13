@@ -1,13 +1,20 @@
 package com.example.dmaiseu
 
+import android.Manifest
 import android.app.Activity
+import android.app.Activity.RESULT_OK
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Environment
+import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,16 +25,26 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.graphics.drawable.toBitmap
-import androidx.core.graphics.drawable.toDrawable
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.github.dhaval2404.imagepicker.ImagePicker
 import java.io.File
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
+import java.util.Locale
+
 
 class SettingsFragment : Fragment(){
     private lateinit var viewModel: SharedUserViewModel
     private lateinit var sharedPrefs: SharedPreferences
+    private val REQUEST_READ_WRITE_PERMISSION_STORAGE:Int = 2001
+    private val REQUEST_PERMISSION_CODE = 123
+    private val IMAGE_PICK_REQUEST = 104
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,7 +68,6 @@ class SettingsFragment : Fragment(){
         val user_name:EditText = view?.findViewById<EditText>(R.id.user_name_value) as EditText
         val user_state:EditText  = view?.findViewById<EditText>(R.id.user_state_value) as EditText
         val userHospistal:EditText  =view?.findViewById<EditText>(R.id.hospital_value) as EditText
-        val bloodTypeSpinner : Spinner = view?.findViewById<Spinner>(R.id.blood_options) as Spinner
         sharedPrefs = this.requireActivity().getSharedPreferences("SHARED_PREFS_USER", Context.MODE_PRIVATE)
         val bloodSpinner = view.findViewById<Spinner>(R.id.blood_options)
 
@@ -61,8 +77,8 @@ class SettingsFragment : Fragment(){
 
         bloodSpinner.adapter = bloodAdapter
 
-        viewModel.loadDataSettings(sharedPrefs,user_name,userRGP,user_state,userTranspDate,userHospistal,userReturnDate, bloodSpinner)
         viewModel.loadImage(userImage,viewModel.internalFilePath)
+        viewModel.loadDataSettings(sharedPrefs,user_name,userRGP,user_state,userTranspDate,userHospistal,userReturnDate, bloodSpinner)
 
         val calendar = Calendar.getInstance()
 
@@ -95,53 +111,102 @@ class SettingsFragment : Fragment(){
         }
 
         btnSave!!.setOnClickListener {
+            try {
 
-            val bloodPosition = bloodAdapter.getPosition(bloodSpinner.selectedItem.toString())
-            if(viewModel.saveData(sharedPrefs,user_name.text.toString(),userRGP.text.toString(),user_state.text.toString(),
-                    userTranspDate.text.toString(),userHospistal.text.toString(),userReturnDate.text.toString(),bloodPosition) ){
+                val bloodPosition = bloodAdapter.getPosition(bloodSpinner.selectedItem.toString())
+                if(viewModel.saveData(sharedPrefs,user_name.text.toString(),userRGP.text.toString(),user_state.text.toString(),
+                        userTranspDate.text.toString(),userHospistal.text.toString(),userReturnDate.text.toString(),bloodPosition) ){
                     Toast.makeText(activity, "Dados Salvos com sucesso!",Toast.LENGTH_LONG).show()
-            }else{
-                Toast.makeText(activity, "Preencha seus dados!",Toast.LENGTH_LONG).show()
+                }else{
+                    Toast.makeText(activity, "Preencha seus dados!",Toast.LENGTH_LONG).show()
+                }
+            }catch (ex:Exception){
+
             }
+
         }
 
         userImage!!.setOnClickListener{
-            deleteDuplicate(viewModel.internalFilePath)
-            cropImage()
+            askPermissions()
+        }
+
+    }
+
+    fun askPermissions() {
+        val permissionCheck =
+            activity?.let { ContextCompat.checkSelfPermission(it, Manifest.permission.WRITE_EXTERNAL_STORAGE) };
+        if(permissionCheck != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(
+                requireActivity(),arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                            Manifest.permission.READ_EXTERNAL_STORAGE),
+                REQUEST_PERMISSION_CODE + REQUEST_READ_WRITE_PERMISSION_STORAGE)
+        }else{
+            pickImage()
         }
     }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        val userImage = view?.findViewById<ImageView>(R.id.user_image) as ImageView
 
-        if(resultCode == Activity.RESULT_OK && requestCode == ImagePicker.REQUEST_CODE){
-            val imageUri = data?.data
+    private fun exibirMensagem(message:String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
 
-            if(imageUri != null){
-                userImage?.setImageURI(data?.data)
-                val imageName:String = imageUri?.path?.substringAfterLast("/").toString()
-                if(imageName != null){
-                    viewModel.userImageName = imageName
-                    viewModel.saveUserImage(imageName,sharedPrefs)
-                    //Toast.makeText(context,imageName,Toast.LENGTH_LONG).show()
-                }
+    fun startCrop(){
+        ImagePicker.Companion.with(this)
+            .crop()
+            .compress(1024)
+            .maxResultSize(1080,1080)
+            .start()
+    }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == REQUEST_PERMISSION_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permissão concedida, você pode realizar a ação desejada aqui
+                pickImage()
+                exibirMensagem("Permissão Concedida")
+            } else {
+                // Permissão negada, você pode mostrar uma mensagem ao usuário ou tomar outra ação apropriada
+                Toast.makeText(requireContext(), "Permissão negada!", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    fun cropImage(){
-        ImagePicker.with(this)
-            .galleryMimeTypes(arrayOf("image/*","image/jpeg","image/jpg","image/png"))
-            .crop()	    			//Crop image(Optional), Check Customization for more option
-            .compress(1024)			//Final image size will be less than 1 MB(Optional)
-            .maxResultSize(512, 512)	//Final image resolution will be less than 1080 x 1080(Optional)
-            .start()
+    fun pickImage(){
+        //val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startCrop()
+        //startActivityForResult(intent, IMAGE_PICK_REQUEST)
     }
 
-    private fun deleteDuplicate(path:String){
-        val file = File(path)
-        if(file.exists()){
-            file.deleteRecursively()
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == IMAGE_PICK_REQUEST || resultCode == Activity.RESULT_OK) {
+            val uri = data?.data
+            val userImage = view?.findViewById<ImageView>(R.id.user_image)
+            userImage?.setImageURI(uri)
+            val bitmap: Bitmap? = uri?.let { MediaStore.Images.Media.getBitmap(requireContext().contentResolver, it) }
+            saveBitmap(bitmap!!)
+        }
+
+    }
+
+
+    private fun saveBitmap(bitmap: Bitmap) {
+
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+        val filename = "JPEG_$timeStamp.jpg"
+
+        val fileOutputStream: FileOutputStream
+        try {
+            fileOutputStream = requireActivity().openFileOutput(filename, Context.MODE_PRIVATE)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream)
+            fileOutputStream.close()
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error saving bitmap: ${e.message}")
         }
     }
 }
