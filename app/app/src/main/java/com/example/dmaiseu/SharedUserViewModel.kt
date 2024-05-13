@@ -1,30 +1,35 @@
 package com.example.dmaiseu
 
+import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Build
+import android.os.Environment
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
+import de.hdodenhof.circleimageview.CircleImageView
 import java.io.File
+import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
 class SharedUserViewModel :ViewModel(){
     val bloodOptions = arrayOf("O+","O-","A+","A-","B+","B-","AB+","AB-")
-    val internalFilePath:String = "/storage/emulated/0/Android/data/com.example.dmaiseu/files/DCIM"
+    val internalFilePath:String = "/storage/emulated/0/Android/data/com.BDgames.DmaisEu/files/DCIM"
     val ImageFolderName:String = "DmaisEuFolder"
     var userImageName:String? = null
     fun saveData(sharedPrefs:SharedPreferences,user_name: String, userRGP: String, user_state: String, userTranspDate: String,
                  userHospistal: String, userReturnDate: String, userBlood:Int):Boolean{
         val editor: SharedPreferences.Editor = sharedPrefs.edit()
-        if(userRGP != null && user_name != null && user_state != null
-            && userTranspDate != null){
+        if(userRGP != ""  && user_name != "" && user_state != ""
+            && userTranspDate != ""){
             editor.apply {
                 putString("user_rgp", userRGP?.toString())
                 putString("user_name",user_name?.toString())
@@ -158,9 +163,30 @@ class SharedUserViewModel :ViewModel(){
         }
     }
 
+    fun saveUserImage(bitmap: Bitmap){
+        val dir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).absolutePath)
+
+        if(!dir.exists()){
+            dir.mkdir()
+        }
+        var fileName = "UserImage.jpeg"
+        val outfile = File(dir, fileName)
+        var outputStream: FileOutputStream? = null
+        try{
+            outputStream= FileOutputStream(outfile)
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100,outputStream)
+            outputStream.flush()
+            outputStream.close()
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+
+    }
     fun loadImage(image: ImageView, path:String){
+        val circleImageView = image as CircleImageView
+        circleImageView.borderWidth = 8
         val bitmap: Bitmap? = try{
-            BitmapFactory.decodeFile(path + File.separator + userImageName)
+            BitmapFactory.decodeFile(path + File.separator + "UserImage.jpeg")
         }catch (e:Exception){
             null
         }
@@ -169,10 +195,11 @@ class SharedUserViewModel :ViewModel(){
         }
     }
 
-    fun saveUserImage(userImageName:String, sharedPrefs: SharedPreferences){
+    fun saveUserImageName(userImageName:String, sharedPrefs: SharedPreferences){
         val editor: SharedPreferences.Editor = sharedPrefs.edit()
-            editor.apply {
-                putString("user_image_name",userImageName?.toString())
-            }.apply()
+        editor.apply {
+            putString("user_image_name",userImageName?.toString())
+        }.apply()
+
     }
 }
