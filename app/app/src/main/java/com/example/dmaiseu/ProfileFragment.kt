@@ -43,7 +43,7 @@ class ProfileFragment : Fragment() {
 
         viewModel.loadDataProfile(sharedPrefs,user_name,userRGP,user_state, userTranspDate,userHospistal,userReturnDate, stringTranspTime,userBlood)
 
-        viewModel.loadImage(user_image,viewModel.internalFilePath)
+        viewModel.loadImage(user_image)
 
         if(userTranspDate.text == null){
             userTranspDate.setOnClickListener {

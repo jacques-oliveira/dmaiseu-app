@@ -142,7 +142,7 @@
                 android:id="@+id/user_blood"
                 android:text=""
                 android:textSize="22sp"
-                android:textStyle="normal"
+                android:textStyle="bold"
                 android:textColor="#D32F2F"
                 android:layout_marginLeft="16dp"
                 android:layout_width="match_parent"

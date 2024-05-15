@@ -4,6 +4,8 @@ import android.Manifest
 import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.app.DatePickerDialog
+import android.content.ContentUris
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -11,6 +13,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -25,6 +28,7 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -32,6 +36,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.dhaval2404.imagepicker.ImagePicker
 import java.io.File
 import java.io.FileOutputStream
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -76,8 +81,8 @@ class SettingsFragment : Fragment(){
         bloodAdapter.setDropDownViewResource(R.layout.custom_spinner_options)
 
         bloodSpinner.adapter = bloodAdapter
-
-        viewModel.loadImage(userImage,viewModel.internalFilePath)
+        //loadUserImage()
+        viewModel.loadImage(userImage)
         viewModel.loadDataSettings(sharedPrefs,user_name,userRGP,user_state,userTranspDate,userHospistal,userReturnDate, bloodSpinner)
 
         val calendar = Calendar.getInstance()
@@ -139,9 +144,9 @@ class SettingsFragment : Fragment(){
             ActivityCompat.requestPermissions(
                 requireActivity(),arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                             Manifest.permission.READ_EXTERNAL_STORAGE),
-                REQUEST_PERMISSION_CODE + REQUEST_READ_WRITE_PERMISSION_STORAGE)
+                REQUEST_READ_WRITE_PERMISSION_STORAGE)
         }else{
-            pickImage()
+            startCrop()
         }
     }
 
@@ -155,6 +160,7 @@ class SettingsFragment : Fragment(){
             .compress(1024)
             .maxResultSize(1080,1080)
             .start()
+
     }
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -163,22 +169,15 @@ class SettingsFragment : Fragment(){
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (requestCode == REQUEST_PERMISSION_CODE) {
+        if (requestCode == REQUEST_READ_WRITE_PERMISSION_STORAGE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permissão concedida, você pode realizar a ação desejada aqui
-                pickImage()
                 exibirMensagem("Permissão Concedida")
             } else {
                 // Permissão negada, você pode mostrar uma mensagem ao usuário ou tomar outra ação apropriada
                 Toast.makeText(requireContext(), "Permissão negada!", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    fun pickImage(){
-        //val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startCrop()
-        //startActivityForResult(intent, IMAGE_PICK_REQUEST)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -189,38 +188,50 @@ class SettingsFragment : Fragment(){
             val userImage = view?.findViewById<ImageView>(R.id.user_image)
             userImage?.setImageURI(uri)
             val bitmap: Bitmap? = uri?.let { MediaStore.Images.Media.getBitmap(requireContext().contentResolver, it) }
-            saveBitmap(bitmap!!)
+            //saveBitmap(bitmap!!)
+            saveUserImage(bitmap!!)
         }
 
     }
 
 
-    private fun saveBitmap(bitmap: Bitmap) {
+    fun saveUserImage(bitmap: Bitmap, fileName: String = "UserImage.jpeg") {
 
-        val diretorio = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-        val file = File(diretorio, "userimage.jpg")
+        val resolver = context?.contentResolver
+        val folderName = "MyAppImages"
+        val relativePath = "Pictures/$folderName"
 
-        if(file.exists()){
-            if(file.delete() ){
-                gravaImagem(file, bitmap)
+        // Verifica se a pasta existe e deleta
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            val folderUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI.buildUpon()
+                .appendQueryParameter("directory", relativePath).build()
+
+            resolver?.delete(folderUri, null, null)
+        }
+
+        // Configurações para o novo arquivo no MediaStore
+        val values = ContentValues().apply {
+            put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
+            put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
+            put(MediaStore.MediaColumns.RELATIVE_PATH, relativePath)
+        }
+
+        // Insere uma nova entrada no MediaStore e obtém o URI do novo arquivo
+        val uri = resolver?.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+
+        uri?.let { outputUri ->
+            resolver.openOutputStream(outputUri)?.use { outputStream ->
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
             }
-        }else{
-            gravaImagem(file, bitmap)
-        }
-
-    }
-
-    private fun gravaImagem(file: File, bitmap: Bitmap) {
-        try {
-            val fileOutputStream = FileOutputStream(file)
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream)
-            fileOutputStream.flush()
-            fileOutputStream.close()
-            Toast.makeText(
-                requireContext(), "Imagem salva com sucesso em $file", Toast.LENGTH_SHORT
-            ).show()
-        } catch (e: Exception) {
-            Log.e("MainActivity", "Error saving bitmap: ${e.message}")
         }
     }
+
+    fun loadUserImage(fileName: String = "UserImage.jpeg"): File? {
+        val directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES+"/MyAppImages")
+        val file = File(directory, fileName)
+
+        // Verifica se o arquivo existe
+        return file
+    }
+
 }

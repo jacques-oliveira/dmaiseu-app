@@ -22,7 +22,9 @@ import java.util.Locale
 
 class SharedUserViewModel :ViewModel(){
     val bloodOptions = arrayOf("O+","O-","A+","A-","B+","B-","AB+","AB-")
-    val internalFilePath:String = "/storage/emulated/0/Android/data/com.BDgames.DmaisEu/files/DCIM"
+    //val internalFilePath:String = "/storage/emulated/0/Android/data/com.BDgames.DmaisEu/files/DCIM"
+    val internalFilePath:String = "/storage/emulated/0/Pictures/MyAppImages"
+   //val internalFilePath:String = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + "/MyAppImages"
     val ImageFolderName:String = "DmaisEuFolder"
     var userImageName:String? = null
     fun saveData(sharedPrefs:SharedPreferences,user_name: String, userRGP: String, user_state: String, userTranspDate: String,
@@ -164,16 +166,20 @@ class SharedUserViewModel :ViewModel(){
     }
 
     fun saveUserImage(bitmap: Bitmap){
-        val dir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).absolutePath)
+        val fileName = "UserImage.jpeg"
+        val dir = Environment.getRootDirectory().absolutePath
 
-        if(!dir.exists()){
-            dir.mkdir()
+//        if(!dir.exists()){
+//            dir.mkdir()
+//        }
+        val file = File(dir, fileName)
+
+        if(file.exists()){
+            file.delete()
         }
-        var fileName = "UserImage.jpeg"
-        val outfile = File(dir, fileName)
-        var outputStream: FileOutputStream? = null
+
         try{
-            outputStream= FileOutputStream(outfile)
+            val outputStream= FileOutputStream(File(file,fileName))
             bitmap.compress(Bitmap.CompressFormat.JPEG,100,outputStream)
             outputStream.flush()
             outputStream.close()
@@ -182,16 +188,16 @@ class SharedUserViewModel :ViewModel(){
         }
 
     }
-    fun loadImage(image: ImageView, path:String){
+    fun loadImage(image: ImageView){
         val circleImageView = image as CircleImageView
         circleImageView.borderWidth = 8
-        val bitmap: Bitmap? = try{
-            BitmapFactory.decodeFile(path + File.separator + "UserImage.jpeg")
-        }catch (e:Exception){
-            null
-        }
+        val directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES+"/MyAppImages")
+        val fileName = "UserImage.jpeg"
+        val file = File(directory, fileName)
+        val bitmap = BitmapFactory.decodeFile(file.absolutePath)
+
         if(bitmap != null){
-            image.setImageBitmap(bitmap)
+                image.setImageBitmap(bitmap)
         }
     }
 
